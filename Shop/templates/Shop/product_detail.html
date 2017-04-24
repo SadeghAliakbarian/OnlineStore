@@ -1,0 +1,15 @@
+{% extends 'Shop/base.html' %}
+
+{% block title %}Online Shop{% endblock %}
+
+{% block content %}
+<h3>{{product.product_name}} &nbsp;  <a href="" class="btn btn-primary btn-sm" role="button">Buy</a></h3><br>
+<img src="{{ product.product_photo.url }}" class="img-responsive" width="300" height="300" /><br>
+{{product.product_dealer}}<br>
+{{product.product_price}}<br>
+{{product.product_description}}<br>
+<br>Hurry up! Only {{product.product_quantity}} left!
+
+
+
+{% endblock %}

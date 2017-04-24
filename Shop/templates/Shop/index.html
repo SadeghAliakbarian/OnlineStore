@@ -1,0 +1,53 @@
+{% extends 'Shop/base.html' %}
+
+{% block title %}Online Shop{% endblock %}
+
+
+{% block content %}
+<!-- slide show of products/offers -->
+    <div class="w3-content w3-display-container" align="center">
+        <h4>Excelent products from bing brands!</h4>
+        {% for product in products %}
+        <img  class="mySlides" src="{{ product.product_banner.url }}" class="img-responsive" width="900" height="400" title="This is the seasonal offer"/>
+        {% endfor %}
+
+<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+
+    </div>
+
+    <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
+    </script>
+
+
+<!-- list of products -->
+<br>
+    {% for product in products %}
+        <div class="col-sm-4 col-lg-2">
+            <h3>{{product.product_name}}</h3><br>
+            <img src="{{ product.product_photo.url }}" class="img-responsive" width="100" height="100" /><br>
+            Dealer: {{product.product_dealer}}<br>
+            Price: AUD${{product.product_price}}<br>
+            {{product.product_description}}<br>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary btn-sm" role="button">Details</a>
+        </div>
+    {% endfor %}
+
+{% endblock%}

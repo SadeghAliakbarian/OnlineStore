@@ -1,0 +1,12 @@
+{% extends 'Shop/base.html' %}
+
+{% block title %}Online Shop{% endblock %}
+
+{% block content %}
+    {% for dealer in dealers %}
+        <h3>{{dealer.dealer_name}}</h3><br>
+        Category: {{dealer.dealer_category}}<br>
+        email: {{dealer.dealer_email}}<br>
+    {% endfor %}
+
+{% endblock %}
